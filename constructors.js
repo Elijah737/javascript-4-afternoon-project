@@ -140,9 +140,9 @@ function Employee(name, email, hireDate) {
 // })
 
 
-User.prototype.removeSavedPost = this.savedPosts.filter(function(num, index, array){
-    return this.savedPosts.id !== num
-});
+User.prototype.removeSavedPost = function(id){
+  this.savedPosts = this.savedPosts.filter(post => post.id !== id)
+}
 
   ////////// PROBLEM 7 //////////
   
@@ -155,3 +155,8 @@ User.prototype.removeSavedPost = this.savedPosts.filter(function(num, index, arr
   // User.prototype.changeRating = function(num1, num2){
     
   // }
+
+  User.prototype.changePostRating = function(id, newRating){
+    let postToUpdate = this.savedPosts.filter(post => post.id === id)
+    postToUpdate[0].rating = newRating;
+}
